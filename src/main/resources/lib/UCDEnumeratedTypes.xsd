@@ -1,0 +1,3315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:mismo="http://www.mismo.org/residential/2009/schemas" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:gse="http://www.datamodelextension.org" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation>Version 3.3.0  Build B299 Date 2014-02-04 Iteration 2014-02-07</xsd:documentation>
+		<xsd:documentation>Copyright 2014 Mortgage Industry Standards Maintenance Organization (MISMO) All rights reserved.&#xD;THIS MISMO STANDARD INCLUDES THE END USER LICENSE AGREEMENT ATTACHED HERETO AT  http://www.mismo.org/AboutMISMO/PoliciesandProcedures.htm  AND IS GOVERNED BY AND SUBJECT TO THE END USER LICENSE AGREEMENT. NO USER OF THIS STANDARD MAY REMOVE THIS REFERENCE TO AND STATEMENT REGARDING THE END USER LICENSE. ANY HARD COPY PUBLICATION OF THIS STANDARD MUST INCLUDE AND ATTACH A HARD COPY PRINT OUT OFTHE END USER LICENSE.  ANY FURTHER ELECTRONIC DISTRIBUTION OF THIS STANDARD MUST INCLUDE A SPECIFIC REFERENCED LINK TO THE END USER LICENSE AGREEMENT OR OTHER MEANS OF ATTACHMENT OF THE END USER LICENSE AGREEMENT.&#xD;DISCLAIMER: THIS MISMO STANDARD IS PROVIDED "AS IS." MISMO, THE MORTGAGE BANKERS ASSOCIATION OF AMERICA ("MBA"), THE COPYRIGHT HOLDER, THE AUTHORS OF THIS MISMO STANDARD AND ANY STANDARD- SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD MAKE NO REPRESENTATIONS OR WARRANTIES (i) EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT; (ii) THAT THE CONTENTS OF SUCH MISMO STANDARD ARE FREE FROM ERROR OR SUITABLE FOR ANY PURPOSE; NOR THAT IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD-PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. IN NO EVENT WILL MISMO, MBA, THE COPYRIGHT HOLDER OR THE STANDARD-SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD BE LIABLE TO ANY PARTY FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES FOR ANY USE OF THIS MISMO STANDARD, INCLUDING, WITHOUT LIMITATION, ANY LOST PROFITS, BUSINESS INTERRUPTION, LOSS OF PROGRAMS OR OTHER DATA ON YOUR INFORMATION HANDLING SYSTEM OR OTHERWISE, EVEN IF MISMO, MBA, THE COPYRIGHT HOLDER AND/OR ANY AUTHORS AND/OR ANY STANDARD-SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD ARE EXPRESSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</xsd:documentation>
+	</xsd:annotation>
+	
+	<xsd:include schemaLocation="UCDDataTypes.xsd"/>
+	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="UCDxlink.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+	<xsd:import schemaLocation="UCDgse.xsd" namespace="http://www.datamodelextension.org" />
+
+	<!-- complex type enum values -->
+	<xsd:complexType name="AbilityToRepayExemptionReasonEnum">
+		<xsd:annotation>
+			<xsd:documentation>Specifies the reason that transaction is exempt from Regulation Z Ability-To-Repay requirements.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="AbilityToRepayExemptionReasonBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AbilityToRepayMethodEnum">
+		<xsd:annotation>
+			<xsd:documentation>Specifies the method by which the creditor satisfied Regulation Z Ability-to-Repay requirements.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="AbilityToRepayMethodBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ActualSignatureEnum">
+        <xsd:annotation>
+            <xsd:documentation>The ActualSignatureType contains the actual type of the signature applied to the signature field.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="SignatureBase">
+                <xsd:attribute name="SensitiveIndicator" type="MISMOIndicator_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>Allows producers and consumers of XML instance documents that are valid MISMO V3 documents to mark any data point to be treated as sensitive. MISMO recommends that any use of a data point labeled as "Sensitive Information" in the LDD ALWAYS have this attribute set to "true".</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="AddressEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the type of address.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="AddressBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="AddressUnitDesignatorEnum">
+        <xsd:annotation>
+            <xsd:documentation>An additional address designation that further defines the delivery location. Example: Apartment, Building, Condo, Suite, Room, Mail Stop, Unit, etc.  This list is based on the USPS Publication 28 on Postal Addressing Standards with the addition of Condo based on mortgage industry need.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="AddressUnitDesignatorBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="AdjustmentRuleEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies whether the occurrence of the adjustment is the first change or a subsequent change.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="AdjustmentRuleBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="AmortizationEnum">
+        <xsd:annotation>
+            <xsd:documentation>A classification or description of a loan or a group of loans generally based on the changeability of the rate or payment over time.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="AmortizationBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="AssetEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the general names (type) of items commonly listed as financial assets of the borrower(s) in a mortgage loan transaction. Assets may be either liquid or fixed and are associated with a corresponding asset amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="AssetBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="AutomatedUnderwritingSystemEnum">
+		<xsd:annotation>
+			<xsd:documentation>The type of automated underwriting system used to evaluate the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="AutomatedUnderwritingSystemBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AutomatedUnderwritingSystemTypeOtherDescriptionEnum">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="AutomatedUnderwritingSystemTypeOtherDescriptionBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ClosingAdjustmentItemEnum">
+        <xsd:annotation>
+            <xsd:documentation>The type of adjustment made during the origination process.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ClosingAdjustmentItemBase">
+				<xsd:attribute ref="gse:DisplayLabelText"/>
+			</xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="ConstructionLoanEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the specific type of construction loan.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ConstructionLoanBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="DocumentEnum">
+        <xsd:annotation>
+            <xsd:documentation>Identifies a specific document defined at a granular level. May be modified or further constrained by other Document data to make the document instance more specific. Further defined in the MISMO Document Classification I-Guide.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="DocumentBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="DocumentFormIssuingEntityNameEnum">
+        <xsd:annotation>
+            <xsd:documentation>Identifies the organization that defined the document form/template.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="DocumentFormIssuingEntityNameBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="DocumentTypeOtherDescriptionEnum">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="DocumentTypeOtherDescriptionBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="EscrowAbsenceReasonEnum">
+		<xsd:annotation>
+			<xsd:documentation>Specifies the reason the loan does not have an escrow account.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="EscrowAbsenceReasonBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="EscrowItemEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the type of Escrow Item.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="EscrowItemBase">
+				<xsd:attribute ref="gse:DisplayLabelText"/>
+			</xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="EscrowItemPaymentPaidByEnum">
+        <xsd:annotation>
+            <xsd:documentation>The role of the party making the escrow item payment.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="EscrowItemPaymentPaidByBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="EscrowItemPaymentTimingEnum">
+        <xsd:annotation>
+            <xsd:documentation>Defines the point in time during the origination process when the escrow item payment was paid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="EscrowItemPaymentTimingBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="EventEnum">
+        <xsd:annotation>
+            <xsd:documentation>For a step in a process, contains the type of action or state.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="EventBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="FeeEnum">
+		<xsd:annotation>
+			<xsd:documentation>Specifies the general type of fees associated with a real estate finance transaction.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="FeeBase">
+				<xsd:attribute ref="gse:DisplayLabelText"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="FeePaidToEnum">
+        <xsd:annotation>
+            <xsd:documentation>Identifies the category or type of payee to which the fee or payment will be paid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="FeePaidToBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="FeePaidToTypeOtherDescriptionEnum">
+        <xsd:annotation>
+            <xsd:documentation/>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="FeePaidToTypeOtherDescriptionBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="FeePaymentPaidByEnum">
+		<xsd:annotation>
+			<xsd:documentation>The role of the party making the payment of fee.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="FeePaymentPaidByBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="FeePercentBasisEnum">
+		<xsd:annotation>
+			<xsd:documentation>Defines the amount upon which the Fee Total Percent is calculated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="FeePercentBasisBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="FundsEnum">
+        <xsd:annotation>
+            <xsd:documentation>A monetary source commonly used to pay obligations in a mortgage loan transaction.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="FundsBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="IndexEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the general category of mortgage index upon which adjustments will be based.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="IndexBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="IntegratedDisclosureCashToCloseItemEnum">
+        <xsd:annotation>
+            <xsd:documentation>Identifies the type of cash to close item as specified in the Calculating Cash to Close section of the integrated disclosure document.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="IntegratedDisclosureCashToCloseItemBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="IntegratedDisclosureCashToCloseItemPaymentEnum">
+        <xsd:annotation>
+            <xsd:documentation>Identifies whether the Cash To Close Item Amount is due to or from the borrower.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="IntegratedDisclosureCashToCloseItemPaymentBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="IntegratedDisclosureSectionEnum">
+        <xsd:annotation>
+            <xsd:documentation>The title or description used to identify a primary section of the integrated disclosure document.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="IntegratedDisclosureSectionBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="IntegratedDisclosureSubsectionEnum">
+        <xsd:annotation>
+            <xsd:documentation>The title or description used to identify a secondary or subsection of the integrated disclosure document.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="IntegratedDisclosureSubsectionBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="IntegratedDisclosureSubsectionPaidByEnum">
+        <xsd:annotation>
+            <xsd:documentation>The role of the party making the payment of the amount associated with the Integrated Disclosure Subsection Total Amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="IntegratedDisclosureSubsectionPaidByBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="IntegratedDisclosureSubsectionPaymentTimingEnum">
+        <xsd:annotation>
+            <xsd:documentation>Defines the point in time during the origination process when the integrated disclosure subsection payment was paid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="IntegratedDisclosureSubsectionPaymentTimingBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="LiabilityEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the general names (types) of items commonly listed as liabilities of the borrower in a mortgage loan transaction.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="LiabilityBase">
+				<xsd:attribute ref="gse:DisplayLabelText"/>
+			</xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="LicenseAuthorityLevelEnum">
+        <xsd:annotation>
+            <xsd:documentation>Level of authority of the license issuer.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="LicenseAuthorityLevelBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="LienPriorityEnum">
+		<xsd:annotation>
+			<xsd:documentation>Specifies the priority of the lien against the subject property.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="LienPriorityBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LoanIdentifierEnum">
+		<xsd:annotation>
+			<xsd:documentation>The type of identifier used for a loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="LoanIdentifierBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LoanMaturityPeriodEnum">
+		<xsd:annotation>
+			<xsd:documentation>The unit of time used to define the period over which the loan matures. Used in conjunction with Loan Maturity Period Count.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="LoanMaturityPeriodBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LoanPurposeEnum">
+		<xsd:annotation>
+			<xsd:documentation>Specifies the purpose for which the loan proceeds will be used.</xsd:documentation>
+			<xsd:documentation>Outstanding issue with MortgageModification enumeration</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="LoanPurposeBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="MICompanyNameEnum">
+		<xsd:annotation>
+			<xsd:documentation>To convey the private MI company short/common name from whom the private mortgage insurance coverage was obtained.</xsd:documentation>
+			<xsd:documentation>  AUS  Enumerated Loan Features  MI Secondary Delivery Servicing AUS Servicing Transfer  MI Company Name Type </xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="MICompanyNameBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="MortgageEnum">
+		<xsd:annotation>
+			<xsd:documentation>Identifies the highest level private or public sector entity under whose guidelines the mortgage is originated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="MortgageBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NegativeAmortizationEnum">
+		<xsd:annotation>
+			<xsd:documentation>Specifies whether negative amortization is scheduled or potential on the loan. Negative amortization is unpaid interest added to the mortgage principal. This applies to loans where the principal balance increases because the payments do not cover the interest.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="NegativeAmortizationBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ObjectEncodingEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the type of encoding used by the resource.</xsd:documentation>
+            <xsd:documentation>Add references to IETF use of compression encode combimation. Add clairification about order of compression and encoding.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ObjectEncodingBase"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="PartialPaymentApplicationMethodEnum">
+		<xsd:annotation>
+			<xsd:documentation>The method used for applying a partial payment to the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="PartialPaymentApplicationMethodBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyRoleEnum">
+		<xsd:annotation>
+			<xsd:documentation>Identifies the role that the party plays in the transaction. Parties may be either a person or legal entity. A party may play multiple roles in a transaction.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="PartyRoleBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyRoleTypeOtherDescriptionEnum">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="PartyRoleTypeOtherDescriptionBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="PaymentFrequencyEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the frequency of the mortgage payment.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="PaymentFrequencyBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="PrepaidItemEnum">
+        <xsd:annotation>
+            <xsd:documentation>Identification of a monthly housing expense component that must be paid in advance.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="PrepaidItemBase" >
+				<xsd:attribute ref="gse:DisplayLabelText"/>
+			</xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="PrepaidItemPaymentPaidByEnum">
+        <xsd:annotation>
+            <xsd:documentation>The role of the party making the breakout payment.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="PrepaidItemPaymentPaidByBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="PrepaidItemPaymentTimingEnum">
+        <xsd:annotation>
+            <xsd:documentation>Defines the point in time during the origination process when the prepaid item payment was paid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="PrepaidItemPaymentTimingBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="PrepaidItemPerDiemCalculationMethodEnum">
+        <xsd:annotation>
+            <xsd:documentation>The number of days in the year used in calculating the dollar amount charged per day for the prepaid item per diem amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="PrepaidItemPerDiemCalculationMethodBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="ProjectedPaymentCalculationPeriodTermEnum">
+        <xsd:annotation>
+            <xsd:documentation>The duration of time used to define the projected payment period.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ProjectedPaymentCalculationPeriodTermBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="ProjectedPaymentEscrowedEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies if the projected payment item is to be paid from an escrow account.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ProjectedPaymentEscrowedBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="ProjectedPaymentEstimatedTaxesInsuranceAssessmentComponentEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the type of payment component included in the calculation of the Projected Payment Estimated Taxes Insurance And Assessment Total Amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ProjectedPaymentEstimatedTaxesInsuranceAssessmentComponentBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="PropertyValuationMethodEnum">
+        <xsd:annotation>
+            <xsd:documentation>Specifies the method by which the property value was  assessed.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="PropertyValuationMethodBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="ProrationItemEnum">
+        <xsd:annotation>
+            <xsd:documentation>Identification of a monthly housing expense component that must be paid in advance.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="ProrationItemBase">
+				<xsd:attribute ref="gse:DisplayLabelText"/>
+			</xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="RealEstateAgentEnum">
+        <xsd:annotation>
+            <xsd:documentation>Describes the type of real estate agent.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="RealEstateAgentBase" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<!-- simple type enum values -->
+	<xsd:simpleType name="AbilityToRepayExemptionReasonBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Ability To Repay Exemption Reason Type Definition: Specifies the reason that transaction is exempt from Regulation Z Ability-To-Repay requirements.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="LoanProgram">
+				<xsd:annotation>
+					<xsd:documentation>Indicates that transaction is exempt from Regulation Z ability-to-repay requirements because the loan program is exempt from requirements.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PropertyUsage">
+				<xsd:annotation>
+					<xsd:documentation>Indicates that transaction is exempt from Regulation Z ability-to-repay requirements because the occupancy type for the property is exempt from requirements.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AbilityToRepayMethodBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Ability To Repay Method Type Definition: Specifies the method by which the creditor satisfied Regulation Z Ability-to-Repay requirements.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="Exempt">
+				<xsd:annotation>
+					<xsd:documentation>A loan that is exempt from Regulation Z Ability-to-Repay requirements.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="General">
+				<xsd:annotation>
+					<xsd:documentation>A loan made subject to Regulation Z general Ability-to-Repay standards.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AddressBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Address Type Definition: Specifies the type of address.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Mailing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="AddressUnitDesignatorBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Address Unit Designator Type Definition: An additional address designation that further defines the delivery location. Example: Apartment, Building, Condo, Suite, Room, Mail Stop, Unit, etc.  This list is based on the USPS Publication 28 on Postal Addressing Standards with the addition of Condo based on mortgage industry need.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Apartment">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Basement">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Building">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Condo">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Department">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Floor">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Front">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Hanger">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Key">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Lobby">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Lot">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Lower">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Office">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Penthouse">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Pier">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Rear">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Room">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Side">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Space">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Stop">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Suite">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Trailer">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Unit">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Upper">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="AdjustmentRuleBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Adjustment Rule Type Definition: Specifies whether the occurrence of the adjustment is the first change or a subsequent change.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="First">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Subsequent">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="AmortizationBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Amortization Type Definition: A classification or description of a loan or a group of loans generally based on the changeability of the rate or payment over time.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="AdjustableRate">
+                <xsd:annotation>
+                    <xsd:documentation>A mortgage that allows the lender to adjust the interest rate in accordance with a specified index periodically.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Fixed">
+                <xsd:annotation>
+                    <xsd:documentation>A mortgage in which the interest rate and payments remain the same for the life of the loan.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="GEM">
+                <xsd:annotation>
+                    <xsd:documentation>GEM (Growing Equity Mortgage) -  A graduated payment mortgage in which increases in a borrowers mortgage payments are used to accelerate reduction of principal on the mortgage. Due to increased payment, the borrower acquires equity more rapidly and retires the debt earlier.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="GPM">
+                <xsd:annotation>
+                    <xsd:documentation>GPM - (Graduated Payment Mortgage) A type of flexible payment mortgage where the payments increase for a specified period of time and then level off. Usually involves negative amortization.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="GraduatedPaymentARM">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic payments/rate changes with additional specified principal and interest changes as documented in the Security Instruments.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Step">
+                <xsd:annotation>
+                    <xsd:documentation>Fixed periodic payment/rate changes without subsidy or negative amortization.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="AssetBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Asset Type Definition: Specifies the general names (type) of items commonly listed as financial assets of the borrower(s) in a mortgage loan transaction. Assets may be either liquid or fixed and are associated with a corresponding asset amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Annuity">
+                <xsd:annotation>
+                    <xsd:documentation>A fixed sum of money paid to someone each year typically for the rest of their life.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Automobile">
+                <xsd:annotation>
+                    <xsd:documentation>Car or similar personal transportation vehicle disclosed as borrowers asset. Usually linked to make or model and year. Typical valuation method is market (blue book).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Boat">
+                <xsd:annotation>
+                    <xsd:documentation>A vessel used for travel on water.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Bond">
+                <xsd:annotation>
+                    <xsd:documentation>An interest-bearing certificate of debt with maturity date. An obligation of issuing entity. Typical valuation is face value (e.g., $1,000 denomination) &amp; market (e.g., value of 4% bond when yields are 6%). </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CertificateOfDepositTimeDeposit">
+                <xsd:annotation>
+                    <xsd:documentation>Certificates issued by financial institutions with a stated term or interest rate, and with a set maturity date. The bank pays the holder in due course at maturity. Early withdrawal subject to penalty. Considered liquid.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="LifeInsurance">
+                <xsd:annotation>
+                    <xsd:documentation>A life insurance policy with a value or investment component. Details of amounts for each policy or Accumulated investment cash value of life insurance policy, net of any loans against that amount. Detail of amounts for each policy.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="MoneyMarketFund">
+                <xsd:annotation>
+                    <xsd:documentation>Mutual fund that allows individuals to participate in managed investments in short-term debt securities, such as certificates of deposit and Treasury bills.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="MutualFund">
+                <xsd:annotation>
+                    <xsd:documentation>Financial entity that invests its shareholders funds in stocks and bonds of other entities with the objective of obtaining a return on its shareholders investment.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="NetWorthOfBusinessOwned">
+                <xsd:annotation>
+                    <xsd:documentation>For a business owned by borrower, the amount resulting from the calculation Assets minus liabilities. Collected on the URLA in Section VI (Assets - Net Worth of Business).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PendingNetSaleProceedsFromRealEstateAssets">
+                <xsd:annotation>
+                    <xsd:documentation>Estimated net cash proceeds (sales price - obligations) from anticipated sale of borrowers real estate assets.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RealEstateOwned">
+                <xsd:annotation>
+                    <xsd:documentation>Market value of real estate owned by the borrower. Not the borrowers primary home.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RecreationalVehicle">
+                <xsd:annotation>
+                    <xsd:documentation>A motor vehicle or trailer equipped with living space and amenities used for recreational purposes.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RelocationMoney">
+                <xsd:annotation>
+                    <xsd:documentation>The funds that are being contributed by an outside party to be added to the closing funds. The Asset value is necessary for multiple borrowers, who each may have their own credit.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RetirementFund">
+                <xsd:annotation>
+                    <xsd:documentation>401Ks, IRAs, etc. controlled by borrower (vested) valued at market.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SaleOtherAssets">
+                <xsd:annotation>
+                    <xsd:documentation>The amount that will be applied to closing funds from the sale of assets not otherwise identified.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SavingsAccount">
+                <xsd:annotation>
+                    <xsd:documentation>Interest-paying account with a financial institution whose main purpose is to earn interest on owners funds held therein. This is NOT a demand deposit account.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SavingsBond">
+                <xsd:annotation>
+                    <xsd:documentation>A nontransferable registered bond issued by the U.S. government.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SecuredBorrowedFundsNotDeposited">
+                <xsd:annotation>
+                    <xsd:documentation>Proceeds from a loan secured by borrowers assets, which have not yet been deposited to borrowers accounts or included with other assets disclosed. Considered liquid. Collected on the URLA in Section VI (Assets - Other Assets).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SeverancePackage">
+                <xsd:annotation>
+                    <xsd:documentation>A bundle of pay and benefits offered to an employee upon separation from employment.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Stock">
+                <xsd:annotation>
+                    <xsd:documentation>Financial instrument evidencing an ownership interest in entity that issued the stock. Typical valuation method is Market.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TrustAccount">
+                <xsd:annotation>
+                    <xsd:documentation>Fiduciary relationship where legal title to a property is transferred to a trustee with the intention the property be administered by the trustee for benefit of the beneficiary, who holds equitable title to such property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="AutomatedUnderwritingSystemBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Automated Underwriting System Type Definition: The type of automated underwriting system used to evaluate the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="Assetwise">
+				<xsd:annotation>
+					<xsd:documentation>GMAC / RFC</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Capstone">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Clues">
+				<xsd:annotation>
+					<xsd:documentation>Bank of America</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DesktopUnderwriter">
+				<xsd:annotation>
+					<xsd:documentation>Fannie Mae</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ECS">
+				<xsd:annotation>
+					<xsd:documentation>Wells Fargo</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FHAScorecard">
+				<xsd:annotation>
+					<xsd:documentation>The loan scoring tool used by lenders to manage workflow and expedite the endorsement process for FHA loans. The FHA TOTAL Scorecard evaluates the overall creditworthiness of the applicants and determines an associated risk level of a loan's eligibility for insurance by FHA. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LoanProspector">
+				<xsd:annotation>
+					<xsd:documentation> Freddie Mac</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Strategyware">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Zippy">
+				<xsd:annotation>
+					<xsd:documentation>Chase</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AutomatedUnderwritingSystemTypeOtherDescriptionBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Automated Underwriting System Type Definition: The type of automated underwriting system used to evaluate the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="DecisionEngine">
+				<xsd:annotation>
+					<xsd:documentation>Citibank</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FirstMortgageCreditScore">
+				<xsd:annotation>
+					<xsd:documentation>Citibank</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GuaranteedUnderwritingSystem">
+				<xsd:annotation>
+					<xsd:documentation>USDA Rural Development</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ClosingAdjustmentItemBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Closing Adjustment Item Type Definition: The type of adjustment made during the origination process.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="FuelCosts">
+                <xsd:annotation>
+                    <xsd:documentation>The value of any fuel stored on the subject property that may be transferred to a subsequent owner.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Gift">
+                <xsd:annotation>
+                    <xsd:documentation>Funds or equity provided as a personal gift to the borrower at the time of closing that does not require repayment.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Grant">
+                <xsd:annotation>
+                    <xsd:documentation>Amount paid on behalf of the borrower toward down payment and/or closing costs by a religious organization, municipality, non-profit organization (excluding credit unions) or public agency that does not require repayment.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ProceedsOfSubordinateLiens">
+                <xsd:annotation>
+                    <xsd:documentation>Dollar amount of proceeds from a subordinate lien secured by the subject property that are being applied to the subject transaction (may be less than the full note loan amount).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RebateCredit">
+                <xsd:annotation>
+                    <xsd:documentation>A premium in the form of cash, services or merchandise to the consumer to reduce the cost otherwise borne by the consumer.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RelocationFunds">
+                <xsd:annotation>
+                    <xsd:documentation>Funds provided to relocating borrower (usually by employer) to offset some of the initial or ongoing costs of borrower's home at the new location.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RepairCompletionEscrowHoldback">
+                <xsd:annotation>
+                    <xsd:documentation>Amount of funds held by lender or servicer to be disbursed when repairs, construction or other improvements are completed on the subject property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Repairs">
+                <xsd:annotation>
+                    <xsd:documentation>Repairs made to the subject property and agreed to between the buyer and the seller in a real estate transaction.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SellerCredit">
+                <xsd:annotation>
+                    <xsd:documentation>A lump sum amount from the property seller to the borrower toward closing costs or where the property seller is making an allowance to the consumer for items to purchase separately. </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SellersEscrowAssumption">
+                <xsd:annotation>
+                    <xsd:documentation>Any transferred escrow balance from the seller to the borrower.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SellersMortgageInsuranceAssumption">
+                <xsd:annotation>
+                    <xsd:documentation>The value of the current mortgage insurance policy being transferred from property seller to borrower.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SweatEquity">
+                <xsd:annotation>
+                    <xsd:documentation>The value of borrower's labor and/or cost of materials contributed by the borrower in construction or renovation to subject property in lieu of some portion of the cash purchase price of the subject property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TenantSecurityDeposit">
+                <xsd:annotation>
+                    <xsd:documentation>Amount of security deposit paid by a tenant to a property seller that is transferrable to the borrower purchasing the subject property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TradeEquity">
+                <xsd:annotation>
+                    <xsd:documentation>Amount of value exchanged when property seller and buyer are trading equity in other real property in lieu of some portion of the cash purchase price of the subject property. IRS 1031 Tax Exchange is one type.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="UnpaidUtilityEscrowHoldback">
+                <xsd:annotation>
+                    <xsd:documentation>Amount of funds held by lender or servicer to be disbursed to pay unpaid utilities on the subject property that have not been billed as of the closing date.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="ConstructionLoanBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Construction Loan Type Definition: Specifies the specific type of construction loan.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="ConstructionOnly">
+                <xsd:annotation>
+                    <xsd:documentation>A short term, interim loan for financing the cost of construction. The lender advances funds to the builder at periodic intervals as work progresses.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ConstructionToPermanent">
+                <xsd:annotation>
+                    <xsd:documentation>The subject loan will be used for construction financing and then be converted to permanent financing.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="DocumentBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Document Type Definition: Identifies a specific document defined at a granular level. May be modified or further constrained by other Document data to make the document instance more specific. Further defined in the MISMO Document Classification I-Guide.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>To be used with TypeOtherDescription data point to describe a document not already on this list.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="DocumentFormIssuingEntityNameBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Document Form Issuing Entity Name Type Definition: Identifies the organization that defined the document form/template.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="CFPB">
+                <xsd:annotation>
+                    <xsd:documentation>Consumer Financial Protection Bureau</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="DocumentTypeOtherDescriptionBase">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="ClosingDisclosure:AlternateForm">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ClosingDisclosure:BorrowerOnly">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ClosingDisclosure:ModelForm">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ClosingDisclosure:SellerOnly">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EscrowAbsenceReasonBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Escrow Absence Reason Type Definition: Specifies the reason the loan does not have an escrow account.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="BorrowerDeclined">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LenderDoesNotOffer">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EscrowItemBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Escrow Item Type Definition: Specifies the type of Escrow Item.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="AssessmentTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="BoroughPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CityPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CondominiumAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CondominiumAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CooperativeAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CooperativeAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CountyBondTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CountyPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DistrictPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="EarthquakeInsurance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="EnergyEfficientImprovementFunds">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="FloodInsurance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HailInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HazardInsurance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersInsurance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="MortgageInsurance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ParishTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PestInsurance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RehabilitationFunds">
+                <xsd:annotation>
+                    <xsd:documentation>Escrow account for rehabilitation repair or upgrade funds that are set aside as part of a Section 203(k) rehabilitation loan.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SchoolPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="StatePropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TownPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TownshipPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="VillagePropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="VolcanoInsurance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="WindstormInsurance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="EscrowItemPaymentPaidByBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Escrow Item Payment Paid By Type Definition: The role of the party making the escrow item payment.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Buyer">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Lender">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Seller">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ThirdParty">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="EscrowItemPaymentTimingBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Escrow Item Payment Timing Type Definition: Defines the point in time during the origination process when the escrow item payment was paid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="AtClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="EventBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Event Type Definition: For a step in a process, contains the type of action or state.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>Denotes that the action type is other than the ones listed above. When this option is selected, a description of the action type must be provided in the ActionTypeOtherDescription attribute.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="FeeBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Fee Type Definition: Specifies the general type of fees associated with a real estate finance transaction.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="203KArchitecturalAndEngineeringFee">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="203KConsultantFee">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="203KDiscountOnRepairs">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="203KInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="203KPermits">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="203KSupplementalOriginationFee">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="203KTitleUpdate">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ApplicationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to broker or lender to receive loan application for mortgage financing</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AppraisalDeskReviewFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for a professional review of an appraisal, performed in an office setting without visual inspection of the actual premises of the subject property or the comparable properties cited in the appraisal report.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AppraisalFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to an appraiser for preparation of an independent, impartial, and objective opinion of value of the subject property, expressed in numerical and descriptive terms.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AppraisalFieldReviewFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged for performing an appraisal review in the field – actually inspecting the property and comparable properties.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AppraisalManagementCompanyFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to an external third party for coordinating assignment of qualified appraisers and supervising appraisers' work in completing opinion(s) of value. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AsbestosInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for an inspection and/or testing for the presence of asbestos within a building.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AssumptionFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for processing, approving and facilitating the assumption of an existing mortgage secured by the subject property to new borrower(s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AutomatedUnderwritingFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for use of an automated underwriting tool or system that assists the mortgage broker, correspondent lender, lender or lender's agent in making a decision to approve, deny or counteroffer a loan application submitted by the borrower(s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AVMFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for preparation of an automated estimate of value of the subject property, expressed in numerical and possibly descriptive terms.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BondFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to a state or local housing agency to participate in a special lending program.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CertificationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged to prepare and submit to the Home Owner’s, Condominium, or Co-Op Association Certification for the property securing the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CondominiumAssociationDues">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable to condominium association in which the subject property is located, which is intended to pay electricity bills for street lights, landscaping, and insurance, maintenance and repairs to community facilities like clubhouses, pools, and exercise rooms and may also cover the salaries of condominium association employees and/or third party management fees.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CondominiumAssociationSpecialAssessment">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable to condominium association in which the subject property is located for capital improvements, repairs, utility service upgrades, etc. that are assessed in addition to the regularly occurring condominium dues.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CooperativeAssociationDues">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable to cooperative in which the subject property is located, which is intended to pay common utilities, landscaping, and insurance, maintenance and repairs to cooperative facilities and may also cover the salaries of cooperative employees and/or third party management fees.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CooperativeAssociationSpecialAssessment">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable to cooperative association by the unit owners which is in addition to the regularly occurring maintenance fees for a specific project or outstanding debt that was not part of the annual budget/assessment. The special assessment is against all unit owners and requires them to pay their fractional interest of the money being requested. The payment of the special assessment is divided by each unit owner’s interest. The amount may be requested immediately from each unit owner or may be broken into installments depending on how they have decided to handle it. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CopyOrFaxFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for copies of documents and/or costs of faxes sent and/or received in conjunction with the loan application, loan processing or loan closing.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CourierFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for delivery of loan application, loan processing and/or loan closing documents.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CreditDisabilityInsurancePremium">
+				<xsd:annotation>
+					<xsd:documentation>Premium for insurance in which the lender is the beneficiary and proceeds payoff the unpaid principal balance in the event of the borrower's permanent disability and/or pay recurring mortgage payment during borrower's temporary disability.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CreditLifeInsurancePremium">
+				<xsd:annotation>
+					<xsd:documentation>Premium for insurance in which the lender is the beneficiary and proceeds payoff the unpaid principal balance in the event of the borrower's death.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CreditPropertyInsurancePremium">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable for insurance that provides coverage from actions such as fire or theft of any personal property used to secure the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CreditReportFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for the credit report(s) used in assessing credit risk.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CreditUnemploymentInsurancePremium">
+				<xsd:annotation>
+					<xsd:documentation>Premium for insurance in which the lender is the beneficiary and proceeds pay recurring mortgage payment during borrower's temporary unemployment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DebtCancellationInsurancePremium">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable for insurance that provides for cancellation of some or all of the mortgage debt upon certain events, such as death or disability of the borrower(s). </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DisasterInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for a report that documents the condition of the property after a localized disaster. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DocumentPreparationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee required by the Lender, title company and/or settlement agent for preparation of closing documents.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DryWallInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee that pertain to the inspection of the drywall within a building.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ElectricalInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee that pertain to the inspection of the electrical system within a building.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ElectronicDocumentDeliveryFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for transmitting or receiving documents in conjunction with loan application, loan processing and/or loan closing by electronic means.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EnvironmentalInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee that pertain to the inspection of the Environmental aspects within a building.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EscrowServiceFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee to set up and service the escrow account for the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EscrowWaiverFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee imposed for waiving the requirement for an escrow account to be established which would, had it been established, been held in reserve to pay periodic payments for homeowners insurance, property taxes and other recurring costs.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FilingFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid when submitting a document to the clerk of a court for the court's immediate consideration and for storage in the court's files.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FloodCertification">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to obtain a certificate that verifies the flood zone, or special flood hazard area, status of a structure on a given property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FoundationInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee that pertain to the inspection of the foundation of a building.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HeatingCoolingInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee charged for an inspection of the adequacy and safety of the heating and cooling systems for the subject property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HighCostMortgageCounselingFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee charged by a counselor or counseling organization for providing counseling regarding high-cost mortgages.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HomeInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for inspection of subject property by professional (other than an appraiser) for an examination of the condition of a home. Items inspected may include but are not limited to electrical, plumbing, sewage disposal, HVAC systems, roof, foundation, permanently installed appliances, drainage and grading, exterior finishes, decks, porches, attics, basements, insulation, smoke and fire detectors, and ventilation.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HomeownersAssociationDues">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable by homeowners to homeowners or neighborhood association within which the subject property is located, which is intended to pay for the daily operation of the association and may include but is not limited to items such as electricity bills for street lights, landscaping, and maintenance and repairs to community facilities like clubhouses, pools, and exercise rooms and may also cover insurance on community assets, the salaries of HOA employees or third party management fees.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HomeownersAssociationSpecialAssessment">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable by homeowners to homeowners or neighborhood association in which the subject property is located for items such as capital improvements, utility service upgrades, etc., that may be assessed in addition to the regularly occurring association dues.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HomeWarrantyFee">
+				<xsd:annotation>
+					<xsd:documentation> Fee for issuance of a warranty covering major systems within the subject property, usually (but not always) including the structure, electrical, plumbing, sewage disposal, HVAC systems, roof, foundation, permanently installed appliances, drainage and grading, exterior finishes, decks, porches, attics, basements, insulation, smoke and fire detectors, and ventilation systems.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LeadInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Identifies that the fee type being requested is for testing of the existence of Lead.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LendersAttorneyFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for services provided by attorney or law firm representing or performing services on behalf of the lender.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LoanDiscountPoints">
+				<xsd:annotation>
+					<xsd:documentation>A form of pre-paid interest, equaling a percentage of the loan amount, paid to reduce the interest rate on a mortgage for the life of the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LoanLevelPriceAdjustment">
+				<xsd:annotation>
+					<xsd:documentation>Loan-level pricing adjustments and/or delivery fees charged by mortgage investor or security issuer that is passed onto the borrower, expressed as a percent of loan amount or flat dollar amount.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LoanOriginationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged by the lender or broker as compensation for providing origination services associated with the subject loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LoanOriginatorCompensation">
+				<xsd:annotation>
+					<xsd:documentation>The amount of any compensation of a loan originator paid by the creditor, the borrower, the property seller or any interested party to the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ManualUnderwritingFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to mortgage broker, correspondent lender, lender or lender's agent to manually review loan processing documents, appraisal and disclosures and make a decision to approve the loan application.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MERSRegistrationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged for registering/transferring the loan onto the Mortgage Electronic Registration System.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MIUpfrontPremium">
+				<xsd:annotation>
+					<xsd:documentation>The dollar amount of MI premium (PMI or FHA) charged to the borrower at time of closing. One time payment made at closing beyond the monthly or annual premiums.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MoldInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Identifies that the fee type being requested is for testing for the existence of mold. This Can be both Airborne and surface and will need to identify the number of samples to be taken for each.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MortgageSurchargeCountyOrParish">
+				<xsd:annotation>
+					<xsd:documentation>Special assessment, surcharge or fee charged by the county or parish in which the subject property is located in conjunction with a mortgage loan, which is levied in addition to regularly assessed property and school taxes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MortgageSurchargeMunicipal">
+				<xsd:annotation>
+					<xsd:documentation>Special assessment, surcharge or fee charged by the municipality in which the subject property is located in conjunction with a mortgage loan, which is levied in addition to regularly assessed property and school taxes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MortgageSurchargeState">
+				<xsd:annotation>
+					<xsd:documentation>Special assessment, surcharge or fee charged by the state in which the subject property is located in conjunction with a mortgage loan, which is levied in addition to regularly assessed property and school taxes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MunicipalLienCertificateFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged by a municipality to release a lien or injunction after payment of fines for property non-compliance have been completed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NotaryFee">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PestInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Cost for inspection, testing and preparation of a report describing all infestations, past infestations and visible damage caused by termites, rodents, squirrels and other pests resulting from an inspection of the interior and exterior of the subject property structures by a qualified pest inspector.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PlumbingInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee charged to conduct an inspection of the plumbing system within a building.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PowerOfAttorneyPreparationFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee charged to create and  review documents necessary to execute a Power of Attorney.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PowerOfAttorneyRecordingFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee assessed by a government authority to record and index a Power of Attorney as required under State or local law. Recording fees are assessed based on the type of document to be recorded or its physical characteristics, such as the number of pages. Unlike transfer taxes, recording fees are not based on the sales price of the property or loan amount.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PreclosingVerificationControlFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee to reimburse lender or mortgage broker for performing certain quality control or verification activities and/or using automated fraud detection tools, which may include identity verification, Social Security number or Individual Tax Identification Number validation, employment and/or income validation, Federal Income Tax return validation, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ProcessingFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged by lender, mortgage broker or correspondent lender for processing of loan application.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PropertyInspectionWaiverFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged for waiving the requirement of a physical inspection of the subject property and preparation of an appraisal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PropertyTaxStatusResearchFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to a firm or individual who verifies the status of unpaid property taxes on the subject property and/or provides continuous monitoring of the tax status on behalf of the lender of record.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RadonInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Identifies that the fee type being requested is for testing the Level of Radon emissions in a residence.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RateLockFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee to establish that the lender and borrower have fixed (locked), for a specific period, certain terms of the loan to be closed at a later date.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RealEstateCommissionBuyersBroker">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable to licensed real estate broker representing the buyers' interests for professional activities related to the purchase of the subject property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RealEstateCommissionSellersBroker">
+				<xsd:annotation>
+					<xsd:documentation>Fee payable to licensed real estate broker representing the sellers' interests for professional activities related to the listing and/or sale of the subject property.  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ReconveyanceFee">
+				<xsd:annotation>
+					<xsd:documentation>Fees imposed for preparing and providing documents when a loan is paid in full, whether or not the loan is prepaid, such as a loan payoff statement, a reconveyance document, or another document releasing the creditor’s security interest in the dwelling that secures the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RecordingFeeForDeed">
+				<xsd:annotation>
+					<xsd:documentation>Fee for recording trust deed, deed of trust, or other security instrument with the appropriate government entity based on the nature of the physical document (typically number of pages) and not based on the sales price or value of the property or loan amount being extended to the borrower.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RecordingFeeForMortgage">
+				<xsd:annotation>
+					<xsd:documentation>Fee for recording mortgage with the appropriate government entity based on the nature of the physical document (typically number of pages) and not based on the sales price or value of the property or loan amount being extended to the borrower.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RecordingFeeTotal">
+				<xsd:annotation>
+					<xsd:documentation>Fee total of all aggregated deed and mortgage taxes and government fees.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ReinspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for reinspection of the subject property after completion of construction, repairs or improvements.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RoofInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Identifies that the fee type being requested is for an detailed inspection of the roof.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SepticInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Identifies that the fee type being requested is for testing the operation of an installed septic system.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SettlementFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for settlement service provider to conduct the loan settlement and/or real estate closing transaction.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SigningAgentFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged for the services of a signing agent who, as an accommodation of the borrower, closes the loan at a specific time or at a location requested by the borrower.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SmokeDetectorInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Identifies that the fee type being requested is for inspection of Smoke Detectors.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="StructuralInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>A fee charged  to perform an inspection and generate a report as to the structural integrity of a building. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SubordinationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to a holder of a lien secured by the subject property to subordinate its lien position to the new first lien.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SurveyFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to a professional surveyor to perform an inspection of the physical boundaries of the land pertaining to the subject property and to prepare a drawing and description of the boundaries, improvements (such as buildings, fences, pools, etc.) and any encroachments and/or easements on the land. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TemporaryBuydownAdministrationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to lender or lender's agent to administer a temporary buydown.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TemporaryBuydownPoints">
+				<xsd:annotation>
+					<xsd:documentation>A form of pre-paid interest, equaling a percentage of the loan amount, paid to temporarily reduce the interest rate on a mortgage for a specific period of the initial term of the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleClosingFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to title company for conducting the loan closing on the subject transaction.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleClosingProtectionLetterFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee charged for a statement or document issued by title insurance underwriters that sets forth the responsibility for negligence of an underwriter, fraud and errors in closings performed by the agents of the underwriter and approved attorneys.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleDocumentPreparationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to title company for preparation of documents for the loan closing, deed transfer and other documents needed to perfect the mortgage lien and complete ownership transfer of the subject property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleEndorsementFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to title company for preparation of any necessary endorsements to the title policy/policies issued pertaining to the subject transaction.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleExaminationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to title company for conducting title search and preparing title abstract on subject property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleInsuranceBinderFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to title company for preparation of the title binder (title commitment).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleLendersCoveragePremium">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to title company for issuance of lender's title insurance policy that indemnifies the lender in the event that clear ownership of property is challenged by the discovery of faults in the title.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleNotaryFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to the title company for the performance of notary services.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleOwnersCoveragePremium">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to title company for issuance of owner's title insurance policy that indemnifies the owner of real estate in the event that his or her clear ownership of property is challenged by the discovery of faults in the title. (This coverage is optional.)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleUnderwritingIssueResolutionFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid to title company for research and resolution of title issues.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TransferTaxTotal">
+				<xsd:annotation>
+					<xsd:documentation>Fee to jurisdictional government entity based on the sales price, value of the property or loan amount being extended to the borrower.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="USDARuralDevelopmentGuaranteeFee">
+				<xsd:annotation>
+					<xsd:documentation>An upfront financing fee the borrower pays at closing for USDA Rural Development loans.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VAFundingFee">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VerificationOfAssetsFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for verification of assets disclosed by the borrower on the loan application.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VerificationOfEmploymentFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for verification of employment disclosed by the borrower on the loan application.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VerificationOfIncomeFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for verification of income disclosed by the borrower on the loan application.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VerificationOfResidencyStatusFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for verification of residency status disclosed by the borrower on the loan application.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VerificationOfTaxpayerIdentificationFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for verification of Social Security number or Individual Tax Identification number disclosed by the borrower on the loan application.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VerificationOfTaxReturnFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee paid for verification of financial information reported by the borrower on the tax returns provided in conjunction with the loan application.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WaterTestingFee">
+				<xsd:annotation>
+					<xsd:documentation>Identifies that the fee type being requested is for testing the Water Quality.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WellInspectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Identifies that the fee type being requested is for a well inspection.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WireTransferFee">
+				<xsd:annotation>
+					<xsd:documentation>Fee for wiring funds in connection with the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FeePaidToBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Fee Paid To Type Definition: Identifies the category or type of payee to which the fee or payment will be paid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Broker">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Investor">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Lender">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ThirdPartyProvider">
+                <xsd:annotation>
+                    <xsd:documentation>Fee is being paid to a third party provider.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="FeePaidToTypeOtherDescriptionBase">
+        <xsd:annotation>
+            <xsd:documentation/>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="BrokerAffiliate">
+                <xsd:annotation>
+                    <xsd:documentation>Fee is being paid to a third party provider who is an affiliate of the Mortgage Broker.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="LenderAffiliate">
+                <xsd:annotation>
+                    <xsd:documentation>Fee is being paid to a third party provider who is an affiliate of the Lender or Creditor.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="FeePaymentPaidByBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Fee Payment Paid By Type Definition: The role of the party making the payment of fee.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="Buyer">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Lender">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Seller">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ThirdParty">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FeePercentBasisBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Fee Percent Basis Type Definition: Defines the amount upon which the Fee Total Percent is calculated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="OriginalLoanAmount">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FundsBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Funds Type Definition: A monetary source commonly used to pay obligations in a mortgage loan transaction.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="DepositOnSalesContract">
+                <xsd:annotation>
+                    <xsd:documentation>Amount of money deposited with the property seller or property seller's agent at the time the sales contract is accepted to perfect the sales contract.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ExcessDeposit">
+                <xsd:annotation>
+                    <xsd:documentation>Amount of any excess deposit retained by the seller at the time of real estate closing. Includes (a) amounts held by seller's real estate broker or other third party (who is not the settlement agent) which exceed the fee or commission owed to that party if the party will provide the excess deposit directly to the seller rather than through the closing agent, and (b) If the deposit or any portion has been distributed to the seller prior to closing, the amount not distributed to seller.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="IndexBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Index Type Definition: Specifies the general category of mortgage index upon which adjustments will be based.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="BankPrimeLoan">
+                <xsd:annotation>
+                    <xsd:documentation>Often referred to as Prime Rate</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CertificateOfDepositIndex">
+                <xsd:annotation>
+                    <xsd:documentation>Often referred to as CODI</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ConstantMaturityTreasury">
+                <xsd:annotation>
+                    <xsd:documentation>Often referred to as CMT</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CostOfSavingsIndex">
+                <xsd:annotation>
+                    <xsd:documentation>Often referred to as COSI</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="EleventhDistrictCostOfFundsIndex">
+                <xsd:annotation>
+                    <xsd:documentation>Often referred to as COFI</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="LIBOR">
+                <xsd:annotation>
+                    <xsd:documentation>London Interbank Offered Rate</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TreasuryBill">
+                <xsd:annotation>
+                    <xsd:documentation>Often referred to as T-Bill</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TwelveMonthTreasuryAverage">
+                <xsd:annotation>
+                    <xsd:documentation>Often referred to as MTA</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="IntegratedDisclosureCashToCloseItemBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Integrated Disclosure Cash To Close Item Type Definition: Identifies the type of cash to close item as specified in the Calculating Cash to Close section of the integrated disclosure document.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="AdjustmentsAndOtherCredits">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CashToCloseTotal">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ClosingCostsFinanced">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ClosingCostsPaidBeforeClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Deposit">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DownPayment">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="FundsForBorrower">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="FundsFromBorrower">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="LoanAmount">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SellerCredits">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TotalClosingCosts">
+                <xsd:annotation>
+                    <xsd:documentation>Equivalent of J on Loan Estimate and Closing Disclosure</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TotalPayoffsAndPayments">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="IntegratedDisclosureCashToCloseItemPaymentBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Integrated Disclosure Cash To Close Item Payment Type Definition: Identifies whether the Cash To Close Item Amount is due to or from the borrower.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="FromBorrower">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ToBorrower">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="IntegratedDisclosureSectionBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Integrated Disclosure Section Type Definition: The title or description used to identify a primary section of the integrated disclosure document.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="DueFromBorrowerAtClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DueFromSellerAtClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DueToSellerAtClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="InitialEscrowPaymentAtClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="OriginationCharges">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="OtherCosts">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PaidAlreadyByOrOnBehalfOfBorrowerAtClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PayoffsAndPayments">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Prepaids">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ServicesBorrowerDidNotShopFor">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ServicesBorrowerDidShopFor">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TaxesAndOtherGovernmentFees">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TotalClosingCosts">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TotalLoanCosts">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TotalOtherCosts">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="IntegratedDisclosureSubsectionBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Integrated Disclosure Subsection Type Definition: The title or description used to identify a secondary or subsection of the integrated disclosure document.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Adjustments">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="AdjustmentsForItemsPaidBySellerInAdvance">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="AdjustmentsForItemsUnpaidBySeller">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ClosingCostsSubtotal">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="LenderCredits">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="LoanCostsSubtotal">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="OtherCostsSubtotal">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="OtherCredits">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="IntegratedDisclosureSubsectionPaidByBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Integrated Disclosure Subsection Paid By Type Definition: The role of the party making the payment of the amount associated with the Integrated Disclosure Subsection Total Amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Buyer">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Seller">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ThirdParty">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="IntegratedDisclosureSubsectionPaymentTimingBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Integrated Disclosure Subsection Payment Timing Type Definition: Defines the point in time during the origination process when the integrated disclosure subsection payment was paid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="AtClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="BeforeClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="LiabilityBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Liability Type Definition: Specifies the general names (types) of items commonly listed as liabilities of the borrower in a mortgage loan transaction.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="BorrowerEstimatedTotalMonthlyLiabilityPayment">
+                <xsd:annotation>
+                    <xsd:documentation>The borrower monthly liability amount used by the lender to qualify the borrower for the loan.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CollectionsJudgmentsAndLiens">
+                <xsd:annotation>
+                    <xsd:documentation>Lien upon the property of a debtor resulting from a decree of the court.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DeferredStudentLoan">
+                <xsd:annotation>
+                    <xsd:documentation>A student loan whose repayment is deferred.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DelinquentTaxes">
+                <xsd:annotation>
+                    <xsd:documentation>Amount of local, state or federal taxes that are past due and not paid</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="FirstPositionMortgageLien">
+                <xsd:annotation>
+                    <xsd:documentation>The amount of any mortgage loan secured in first lien position.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Garnishments">
+                <xsd:annotation>
+                    <xsd:documentation>A notice to an employer or other asset holder that monies, wages, or property of a debtor must be applied to a specific debt or creditor.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HELOC">
+                <xsd:annotation>
+                    <xsd:documentation>A mortgage loan, which is usually in a subordinate position, that allows the borrower to obtain multiple advances of the loan proceeds at his or her own discretion, up to an amount that represents a specified percentage of the borrowers equity in a proper</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationLien">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Installment">
+                <xsd:annotation>
+                    <xsd:documentation>Borrowed money repaid in several successive payments, usually at regular intervals, for a specific amount and a specified term.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="LeasePayment">
+                <xsd:annotation>
+                    <xsd:documentation>Regular payment amount specified by long-term contract for the use of an asset.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="MortgageLoan">
+                <xsd:annotation>
+                    <xsd:documentation>A closed ended lien secured against a property that may be in a first or subordinate lien position. Collected on the URLA in Section VI (Liabilities).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Open30DayChargeAccount">
+                <xsd:annotation>
+                    <xsd:documentation>An account where the borrower can charge debt as needed. The full balance is normally repaid on a monthly basis.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>Used in conjunction with a textual description of other types of liabilities.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PersonalLoan">
+                <xsd:annotation>
+                    <xsd:documentation>A loan granted for personal or household use. Loans may be unsecured or secured by the item purchased.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Revolving">
+                <xsd:annotation>
+                    <xsd:documentation>Open lines of credit, which are subject to variable payments and interest in accordance with the balance.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SecondPositionMortgageLien">
+                <xsd:annotation>
+                    <xsd:documentation>Lien recorded to secure a second mortgage when a first mortgage lien already exists.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Taxes">
+                <xsd:annotation>
+                    <xsd:documentation>Taxes levied on borrowers income by local, state, or US Government.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TaxLien">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ThirdPositionMortgageLien">
+                <xsd:annotation>
+                    <xsd:documentation>Lien recorded to secure a third mortgage when a first and second mortgage liens already exist.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="UnsecuredHomeImprovementLoanInstallment">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="UnsecuredHomeImprovementLoanRevolving">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="LicenseAuthorityLevelBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: License Authority Level Type Definition: Level of authority of the license issuer.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Private">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PublicFederal">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PublicLocal">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PublicState">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="LienPriorityBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Lien Priority Exception Type Definition: Describes the lien priority for a piece of collateral where multiple pieces of collateral secure a single loan. 
+Term: Lien Priority Type Definition: Specifies the priority of the lien against the subject property.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="FirstLien">
+				<xsd:annotation>
+					<xsd:documentation>A mortgage that gives the mortgagee a security right over all other mortgages of the mortgaged property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FourthLien">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SecondLien">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ThirdLien">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LoanIdentifierBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Loan Identifier Type Definition: The type of identifier used for a loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="AgencyCase">
+				<xsd:annotation>
+					<xsd:documentation>An identifier assigned by a government agency (for example FHA Case Number, VA Case Number). The identifier is used by the agency to identify a loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LenderLoan">
+				<xsd:annotation>
+					<xsd:documentation>The identifier assigned by the originating Lender to be referenced as the Loan ID/Number on all settlement documents, notes, riders, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MERS_MIN">
+				<xsd:annotation>
+					<xsd:documentation>Number used by MERS to identify loans. Referred to as the MIN, Mortgage Identification Number.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LoanMaturityPeriodBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Loan Maturity Period Type Definition: The unit of time used to define the period over which the loan matures. Used in conjunction with Loan Maturity Period Count.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="Month">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LoanPurposeBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Loan Purpose Type Definition: Specifies the purpose for which the loan proceeds will be used.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="Purchase">
+				<xsd:annotation>
+					<xsd:documentation>A loan made in association with the original purchase of a piece of property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Refinance">
+				<xsd:annotation>
+					<xsd:documentation>The repayment of a debt from proceeds of a new loan using the same property as security  or a mortgage secured by a property previously owned free and clear by the Borrower.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MICompanyNameBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: MI Company Name Type Definition: To convey the private MI company short/common name from whom the private mortgage insurance coverage was obtained.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="CMG">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Essent">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Genworth">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MGIC">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NationalMI">
+				<xsd:annotation>
+					<xsd:documentation>National Mortgage Insurance</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PMI">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Radian">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RMIC">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Triad">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UGI">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MortgageBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Mortgage Type Definition: Identifies the highest level private or public sector entity under whose guidelines the mortgage is originated.
+Term: Pool Mortgage Type Definition: Specifies mortgage type of the loans for the pool.
+Term: Supplemental Mortgage Type Definition: Identifies another lower-level private or public sector agency under whose guidelines the mortgage is originated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="Conventional">
+				<xsd:annotation>
+					<xsd:documentation>Mortgage financing which is not insured or guaranteed by a government agency.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FHA">
+				<xsd:annotation>
+					<xsd:documentation>A loan originated in accordance with the guidelines of HUD’s Federal Housing Administration, a federal agency that provides mortgage insurance on single-family, multifamily, manufactured homes and hospital loans made by FHA-approved lenders throughout the United States and its territories.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LocalAgency">
+				<xsd:annotation>
+					<xsd:documentation>A loan originated in accordance with the guidelines of an agency governed by a municipal jurisdiction.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PublicAndIndianHousing">
+				<xsd:annotation>
+					<xsd:documentation>A loan originated in accordance with the guidelines of HUD’s Office of Native American Programs, which provides safe and affordable housing for lower-income Native American, Alaska Native and Native Hawaiian families.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="StateAgency">
+				<xsd:annotation>
+					<xsd:documentation>A loan originated in accordance with the guidelines of an agency governed by a state jurisdiction.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="USDARuralDevelopment">
+				<xsd:annotation>
+					<xsd:documentation>A  loan originated in accordance with the guidelines of the USDA Rural Development Agency’s Housing and Community Facilities Program, which provides funding for single family homes in rural communities.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VA">
+				<xsd:annotation>
+					<xsd:documentation>A loan originated in accordance with the guidelines of the Department of Veterans Affairs’  Loan Guaranty Home Loan Program, which guarantees loans made by private lenders, such as banks, savings &amp; loans, or mortgage companies to eligible veterans for the purchase of a home which must be for their own personal occupancy.  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NegativeAmortizationBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Negative Amortization Type Definition: Specifies whether negative amortization is scheduled or potential on the loan. Negative amortization is unpaid interest added to the mortgage principal. This applies to loans where the principal balance increases because the payments do not cover the interest.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="PotentialNegativeAmortization">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ScheduledNegativeAmortization">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ObjectEncodingBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Object Encoding Type Definition: Specifies the type of encoding used by the resource.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Base64">
+                <xsd:annotation>
+                    <xsd:documentation>Base64 encoding MUST follow IETF RFC 4648 as documented in sections 3 and 4.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="PartialPaymentApplicationMethodBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Partial Payment Application Method Type Definition: The method used for applying a partial payment to the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="ApplyPartialPayment">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HoldUntilCompleteAmount">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PartyRoleBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Party Role Type Definition: Identifies the role that the party plays in the transaction. Parties may be either a person or legal entity. A party may play multiple roles in a transaction.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="Borrower">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ClosingAgent">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LoanDeliveryFilePreparer">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MortgageBroker">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NonTitleSpouse">
+				<xsd:annotation>
+					<xsd:documentation>Individual associated with the borrower, usually the spouse, who is not obligated on the loan nor are they a title holder on the subject property. Nevertheless they have certain rights with regard to the loan and disposition of the property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NotePayTo">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PropertySeller">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RealEstateAgent">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TitleHolder">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PartyRoleTypeOtherDescriptionBase">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="NonTitleNonSpouseOwnershipInterest">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PaymentFrequencyBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Payment Frequency Type Definition: Specifies the frequency of the mortgage payment.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Annual">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="AtMaturity">
+                <xsd:annotation>
+                    <xsd:documentation>Payment one time at maturity</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Biweekly">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Monthly">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Quarterly">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Semiannual">
+                <xsd:annotation>
+                    <xsd:documentation>Payment every six months</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Semimonthly">
+                <xsd:annotation>
+                    <xsd:documentation>Payment twice a month</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Weekly">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="PrepaidItemBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Prepaid Item Type Definition: Identification of a monthly housing expense component that must be paid in advance.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="BoroughPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the borough in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CityPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the city in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CondominiumAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to condominium association in which the subject property is located, which is intended to pay electricity bills for street lights, landscaping, and maintenance and repairs to community facilities like clubhouses, pools, and exercise rooms and may also cover insurance on community assets, the salaries of condominium association employees and/or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CondominiumAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to condominium association in which the subject property is located for capital improvements, utility service upgrades, etc. that are assessed in addition to the regularly occurring condominium dues.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CooperativeAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to cooperative in which the subject property is located, which is intended to pay common utilities, landscaping, and maintenance and repairs to cooperative facilities and may also cover insurance on cooperative assets, the salaries of cooperative employees and/or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CooperativeAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to cooperative association or corporation in which the subject property is located for capital improvements, utility service upgrades, etc. that are assessed in addition to the regularly occurring dues, fees or debt service.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CountyPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the county in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DistrictPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the district in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="EarthquakeInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to insurer to provide property insurance against loss from earthquake, land tremors, landslide, mudflow, or other earth movement whether the damage is caused by an earthquake. </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="FloodInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Fee paid for flood insurance coverage on the subject property and may include coverage for contents.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HailInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Cost of coverage for hail damage insurance, which typically covers the cost of rebuilding the subject property if losses are caused by hail storms.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HazardInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Fee paid for coverage on the subject property for losses or damage due to fire or other named perils.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to homeowners or neighborhood association for the planned unit development or neighborhood within which the subject property is located, which is intended to pay electricity bills for street lights, landscaping, and maintenance and repairs to community facilities like clubhouses, pools, and exercise rooms and may also cover insurance on community assets, the salaries of HOA employees or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to homeowners or neighborhood association in which the subject property is located for capital improvements, utility service upgrades, etc., that are assessed in addition to the regularly occurring association dues.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic amount paid for coverage against hazards, theft and other losses on the insured subject property and sometimes insured contents of personal property, and other improvements (fences, porches, patios, driveways, landscaping, accessory buildings, in ground pools, etc.) May or may not include riders to insure against losses caused by windstorms, hurricanes, etc.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="MortgageInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Fee for Insurance or guaranty to protect lender against the non-payment of, or default on, an individual mortgage.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PrepaidInterest">
+                <xsd:annotation>
+                    <xsd:documentation>Interest collected at settlement for a part of the month or other period between settlement and the date from which interest will be collected with the first regular monthly payment.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="StatePropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the state in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TownPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the town in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="VolcanoInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic amount paid for coverage against losses on the insured subject property and sometimes insured contents of personal property, and other improvements (fences, porches, patios, driveways, landscaping, accessory buildings, in ground pools, etc.) associated with volcano eruptions near the subject property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="WindAndStormInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic amount paid for coverage against losses on the insured subject property and sometimes insured contents of personal property, and other improvements (fences, porches, patios, driveways, landscaping, accessory buildings, in ground pools, etc.) associated with windstorms, tornadoes and hurricanes affecting the subject property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="PrepaidItemPaymentPaidByBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Prepaid Item Payment Paid By Type Definition: The role of the party making the breakout payment.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Buyer">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Lender">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Seller">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ThirdParty">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="PrepaidItemPaymentTimingBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Prepaid Item Payment Timing Type Definition: Defines the point in time during the origination process when the prepaid item payment was paid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="AtClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="BeforeClosing">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="PrepaidItemPerDiemCalculationMethodBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Prepaid Item Per Diem Calculation Method Type Definition: The number of days in the year used in calculating the dollar amount charged per day for the prepaid item per diem amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="360">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="365">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="365Or366">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="ProjectedPaymentCalculationPeriodTermBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Projected Payment Calculation Period Term Type Definition: The duration of time used to define the projected payment period.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Yearly">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="ProjectedPaymentEscrowedBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Projected Payment Escrowed Type Definition: Specifies if the projected payment item is to be paid from an escrow account.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Escrowed">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="NotEscrowed">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="ProjectedPaymentEstimatedTaxesInsuranceAssessmentComponentBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Projected Payment Estimated Taxes Insurance Assessment Component Type Definition: Specifies the type of payment component included in the calculation of the Projected Payment Estimated Taxes Insurance And Assessment Total Amount.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="CondominiumAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to condominium association in which the subject property is located, which is intended to pay electricity bills for street lights, landscaping, and insurance, maintenance and repairs to community facilities like clubhouses, pools, and exercise rooms and may also cover the salaries of condominium association employees and/or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CondominiumAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to condominium association in which the subject property is located for capital improvements, repairs, utility service upgrades, etc. that are assessed in addition to the regularly occurring condominium dues.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CooperativeAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to cooperative in which the subject property is located, which is intended to pay common utilities, landscaping, and insurance, maintenance and repairs to cooperative facilities and may also cover the salaries of cooperative employees and/or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CooperativeAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to cooperative association by the unit owners which is in addition to the regularly occurring maintenance fees for a specific project or outstanding debt that was not part of the annual budget/assessment. The special assessment is against all unit owners and requires them to pay their fractional interest of the money being requested. The payment of the special assessment is divided by each unit owner’s interest. The amount may be requested immediately from each unit owner or may be broken into installments depending on how they have decided to handle it.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="GroundRent">
+                <xsd:annotation>
+                    <xsd:documentation>A sum paid for land lease by the owner of a building to the owner of the land on which it is located for state, territory, tribal or other land not pursuant to a leasehold.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable by homeowners to homeowners or neighborhood association within which the subject property is located, which is intended to pay for the daily operation of the association and may include but is not limited to items such as electricity bills for street lights, landscaping, and maintenance and repairs to community facilities like clubhouses, pools, and exercise rooms and may also cover insurance on community assets, the salaries of HOA employees or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable by homeowners to homeowners or neighborhood association in which the subject property is located for items such as capital improvements, utility service upgrades, etc., that may be assessed in addition to the regularly occurring association dues.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersInsurance">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic amount paid for coverage against losses or damage to the insured subject property from hazards such as fire, theft or other named perils. May also cover personal property and/or include riders providing supplemental coverage, e.g. windstorm, hurricanes, or other named causes.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="LeaseholdPayment">
+                <xsd:annotation>
+                    <xsd:documentation>An amount of periodic payment due pursuant to a leasehold agreement.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PropertyTaxes">
+                <xsd:annotation>
+                    <xsd:documentation>Property taxes in aggregate levied by all authorities in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="PropertyValuationMethodBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Property Valuation Method Type Definition: Specifies the method by which the property value was  assessed.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="AutomatedValuationModel">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DesktopAppraisal">
+                <xsd:annotation>
+                    <xsd:documentation>This appraisal valuation is commonly used for refinancing, home equity loans, and home equity lines of credit.  The appraiser determines the value of the property through public records, tax assessments and comparable sales history.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DriveBy">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="FullAppraisal">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="None">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PriorAppraisalUsed">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ProrationItemBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Proration Item Type Definition: Identification of a monthly housing expense component that must be paid in advance.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="BoroughPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the borough in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CityPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the city in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CondominiumAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to condominium association in which the subject property is located, which is intended to pay electricity bills for street lights, landscaping, and maintenance and repairs to community facilities like clubhouses, pools, and exercise rooms and may also cover insurance on community assets, the salaries of condominium association employees and/or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CondominiumAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to condominium association in which the subject property is located for capital improvements, utility service upgrades, etc. that are assessed in addition to the regularly occurring condominium dues.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CooperativeAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to cooperative in which the subject property is located, which is intended to pay common utilities, landscaping, and maintenance and repairs to cooperative facilities and may also cover insurance on cooperative assets, the salaries of cooperative employees and/or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CooperativeAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to cooperative association or corporation in which the subject property is located for capital improvements, utility service upgrades, etc. that are assessed in addition to the regularly occurring dues, fees or debt service.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CountyPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the county in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DistrictPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the district in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="EarthquakeInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to insurer to provide property insurance against loss from earthquake, land tremors, landslide, mudflow, or other earth movement whether the damage is caused by an earthquake. </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="FloodInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Fee paid for flood insurance coverage on the subject property and may include coverage for contents.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="GroundRent">
+                <xsd:annotation>
+                    <xsd:documentation>A sum paid for land lease by the owner of a building to the owner of the land on which it is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HailInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Cost of coverage for hail damage insurance, which typically covers the cost of rebuilding the subject property if losses are caused by hail storms.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HazardInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Fee paid for coverage on the subject property for losses or damage due to fire or other named perils.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationDues">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to homeowners or neighborhood association within which the subject property is located, which is intended to pay electricity bills for street lights, landscaping, and maintenance and repairs to community facilities like clubhouses, pools, and exercise rooms and may also cover insurance on community assets, the salaries of HOA employees or third party management fees.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersAssociationSpecialAssessment">
+                <xsd:annotation>
+                    <xsd:documentation>Fee payable to homeowners or neighborhood association in which the subject property is located for capital improvements, utility service upgrades, etc., that are assessed in addition to the regularly occurring association dues.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="HomeownersInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic amount paid for coverage against hazards, theft and other losses on the insured subject property and sometimes insured contents of personal property, and other improvements (fences, porches, patios, driveways, landscaping, accessory buildings, in ground pools, etc.) May or may not include riders to insure against losses caused by windstorms, hurricanes, etc.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="InterestOnLoanAssumption">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="MortgageInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Fee for Insurance or guaranty to protect lender against the non-payment of, or default on, an individual mortgage.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PastDuePropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Amount of real estate taxes on the subject property that are past due as of the closing date.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="RentFromSubjectProperty">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic amount paid by a tenant for occupancy of a property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="StatePropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the state in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="TownPropertyTax">
+                <xsd:annotation>
+                    <xsd:documentation>Property tax levied by the town in which the subject property is located.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Utilities">
+                <xsd:annotation>
+                    <xsd:documentation>Cost of services to provide power, heat, water, waste removal and/or sewer to the subject property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="VolcanoInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic amount paid for coverage against losses on the insured subject property and sometimes insured contents of personal property, and other improvements (fences, porches, patios, driveways, landscaping, accessory buildings, in ground pools, etc.) associated with volcano eruptions near the subject property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="WindAndStormInsurancePremium">
+                <xsd:annotation>
+                    <xsd:documentation>Periodic amount paid for coverage against losses on the insured subject property and sometimes insured contents of personal property, and other improvements (fences, porches, patios, driveways, landscaping, accessory buildings, in ground pools, etc.) associated with windstorms, tornadoes and hurricanes affecting the subject property.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="RealEstateAgentBase">
+        <xsd:annotation>
+            <xsd:documentation>Term: Real Estate Agent Type Definition: Describes the type of real estate agent.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Listing">
+                <xsd:annotation>
+                    <xsd:documentation>The agent that listed the property and represents the Seller.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Selling">
+                <xsd:annotation>
+                    <xsd:documentation>The agent that sold the property and represents the Buyer (may also be known as the Buyers Agent).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="ReferenceSigningBase">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="NotSigned">
+				<xsd:annotation>
+					<xsd:documentation>This value indicates that none of the SYSTEM_SIGNATURES are applied to the REFERENCE or ObjectURL element and the resource it points to is not signed. The REFERENCE or ObjectURL element MAY change or be resolved, the resource MAY remain available, and its trustworthiness is outside the scope of the SYSTEM_SIGNATURES.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ReferenceAndContentSignedDirectly">
+				<xsd:annotation>
+					<xsd:documentation>This value indicates that a SYSTEM_SIGNATURE is applied to the REFERENCE or ObjectURL element; the resource it points to has also been signed. The REFERENCE or ObjectURL element MUST NOT change or be resolved, the resource MUST remain available, and its trustworthiness can be determined from the Signature.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ReferenceAndContentSignedIndirectly">
+				<xsd:annotation>
+					<xsd:documentation>This value indicates that a SYSTEM_SIGNATURE is applied to the REFERENCE element or the ObjectURL and its sibling elements after computing and saving the OriginalCreatorDigestValue; the resource it points to is not signed. The REFERENCE or ObjectURL element MUST NOT change or be resolved, the resource SHOULD remain available, and its trustworthiness can be determined from the OriginalCreatorDigestValue.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ReferenceCreatedFromSignedContent">
+				<xsd:annotation>
+					<xsd:documentation>This value indicates that the resource pointed to by the REFERENCE or ObjectURL element was originally embedded in the current XML instance document that has SYSTEM_SIGNATURES applied. Prior to validating a SYSTEM_SIGNATURE or applying a new one, the reference MUST be resolved to maintain or determine its trustworthiness.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ReferenceSignedDirectly">
+				<xsd:annotation>
+					<xsd:documentation>This value indicates that a SYSTEM_SIGNATURE is applied to the REFERENCE or ObjectURL element; the resource it points to is not signed. The REFERENCE or ObjectURL element MUST NOT change or be resolved, the resource SHOULD remain available, but its trustworthiness is outside the scope of the SYSTEM_SIGNATURES.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+    <xsd:simpleType name="SignatureBase">
+        <xsd:annotation>
+            <xsd:documentation>
+                Term: Actual Signature Type Definition: The ActualSignatureType contains the actual type of the signature applied to the signature field.
+                Term: Signature Type Definition: Contains the signature type proposed by the document creator. The actual type of the signature applied to the signature field may be different (please see audit trail)
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="Digital">
+                <xsd:annotation>
+                    <xsd:documentation>Denotes a digital signature. The signer uses a digital certificate to apply a PKI-based signature to the document. The certificate maybe a personal certificate of the signer, a system certificate, or a dynamically generated certificate created for that transaction. After signing a signature appearance is generated and place on the signature field in the view. </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Image">
+                <xsd:annotation>
+                    <xsd:documentation>Denotes an image signature. A graphic image of the signers signature  is captured and placed in signature field.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>Denotes that the signature type is other than the ones listed above. When this option is selected, a description of the signature type must be provided in the SignatureTypeOtherDescription attribute.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Text">
+                <xsd:annotation>
+                    <xsd:documentation>Denotes a text signature. The signer types his/her name (signature) in the signature field or clicks a button onscreen indicating acceptance or agreement.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Wet">
+                <xsd:annotation>
+                    <xsd:documentation>Used for non-electronic signatures.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

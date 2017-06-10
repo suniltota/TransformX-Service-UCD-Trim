@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/1999/xlink" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>ModelVersion: 3.3.0LDDVersion: 3.3.0.0  Build: B299 Date: 2014-02-04 Iteration: 2014-02-07</xsd:documentation>
+		<xsd:documentation>Copyright 2014 Mortgage Industry Standards Maintenance Organization (MISMO) All rights reserved.&#xD;&#xD;THIS MISMO STANDARD INCLUDES THE END USER LICENSE AGREEMENT ATTACHED HERETO AT  http://www.mismo.org/AboutMISMO/PoliciesandProcedures.htm  AND IS GOVERNED BY AND SUBJECT TO THE END USER LICENSE AGREEMENT. NO USER OF THIS STANDARD MAY REMOVE THIS REFERENCE TO AND STATEMENT REGARDING THE END USER LICENSE. ANY HARD COPY PUBLICATION OF THIS STANDARD MUST INCLUDE AND ATTACH A HARD COPY PRINT OUT OFTHE END USER LICENSE.  ANY FURTHER ELECTRONIC DISTRIBUTION OF THIS STANDARD MUST INCLUDE A SPECIFIC REFERENCED LINK TO THE END USER LICENSE AGREEMENT OR OTHER MEANS OF ATTACHMENT OF THE END USER LICENSE AGREEMENT.&#xD;&#xD;DISCLAIMER: THIS MISMO STANDARD IS PROVIDED "AS IS." MISMO, THE MORTGAGE BANKERS ASSOCIATION OF AMERICA ("MBA"), THE COPYRIGHT HOLDER, THE AUTHORS OF THIS MISMO STANDARD AND ANY STANDARD- SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD MAKE NO REPRESENTATIONS OR WARRANTIES (i) EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT; (ii) THAT THE CONTENTS OF SUCH MISMO STANDARD ARE FREE FROM ERROR OR SUITABLE FOR ANY PURPOSE; NOR THAT IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD-PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. IN NO EVENT WILL MISMO, MBA, THE COPYRIGHT HOLDER OR THE STANDARD-SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD BE LIABLE TO ANY PARTY FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES FOR ANY USE OF THIS MISMO STANDARD, INCLUDING, WITHOUT LIMITATION, ANY LOST PROFITS, BUSINESS INTERRUPTION, LOSS OF PROGRAMS OR OTHER DATA ON YOUR INFORMATION HANDLING SYSTEM OR OTHERWISE, EVEN IF MISMO, MBA, THE COPYRIGHT HOLDER AND/OR ANY AUTHORS AND/OR ANY STANDARD-SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD ARE EXPRESSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+	<xsd:include schemaLocation="xlink.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>The included xlink.xsd file should be the one defined by the W3C and found at http://www.w3.org/1999/xlink.xsd although other versions that include toplevel definitions of the standard xlink attributes required by MISMO (label, from, to) could be used as well. The arcrole attribute is only restricted when it is used in the MISMOarcLink group allowing the standard definition to be used elsewhere.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:simpleType name="ArcroleAtomic">
+		<xsd:union memberTypes="xlink:ArcroleBase xlink:ArcroleFcts"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ArcroleBase">
+		<xsd:annotation>
+			<xsd:documentation>The base set of arcroles defined by MISMO; the uri MUST have the initial version of the LDD (/mismo_n_n_n_0) that included  the definition. Once an LDD version is assigned, it never changes even when a new major version is built.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:anyURI">
+			<xsd:enumeration value="urn:fdc:mismo.org:2009:residential/ROLE_IsAttorneyInFactFor_ROLE">
+				<xsd:annotation>
+					<xsd:documentation>Relate a party who is attorney in fact for another party.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="urn:fdc:mismo.org:2009:residential/ROLE_IsEmployedBy_ROLE">
+				<xsd:annotation>
+					<xsd:documentation>Relate a party who is employed by another party.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="urn:fdc:mismo.org:2009:residential/ROLE_IsSettlorFor_ROLE">
+				<xsd:annotation>
+					<xsd:documentation>Relate an individual who has the role of settlor for another party.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="urn:fdc:mismo.org:2009:residential/ROLE_IsSupervisedBy_ROLE">
+				<xsd:annotation>
+					<xsd:documentation>The first party is supervised by the second party.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="urn:fdc:mismo.org:2009:residential/ROLE_IsTrusteeFor_ROLE">
+				<xsd:annotation>
+					<xsd:documentation>Relate an individual who has a role of trustee for another party.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="urn:fdc:mismo.org:2009:residential/ROLE_SharesSufficientAssetsAndLiabilitiesWith_ROLE">
+				<xsd:annotation>
+					<xsd:documentation>Relate two or more parties who share sufficient assets (and liabilities).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="urn:fdc:mismo.org:2009:residential/DOCUMENT_AppendsTo_DOCUMENT">
+				<xsd:annotation>
+					<xsd:documentation>Link a document (e.g. NoteRider) that appends to another document (e.g. Note).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="urn:fdc:mismo.org:2009:residential/DOCUMENT_Replaces_DOCUMENT">
+				<xsd:annotation>
+					<xsd:documentation>Link a document (e.g. final TIL) that replaces another document (e.g. preliminary TIL).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ArcroleFcts">
+		<xsd:annotation>
+			<xsd:documentation>Two patterns to restrict extensions to be MISMO URIs of a certain type (/mismo_ or /other_), permit new mismo_ values only from future LDD versions, require other_ values to incorporate at least a two-level domain name (lowerLevels.topLevel, and to use the restricted character set for the remaining value. Each new release MUST update the mismo_ pattern to prohibit values from the current or previous releases--sample patterns for major changes are provided in the appinfo.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:anyURI">
+			<xsd:pattern value="urn:fdc:mismo.org:2009:residential/[A-Z][A-Z0-9_]{1,78}[A-Z0-9]_IsAssociatedWith_[A-Z][A-Za-z0-9_]{1,78}[A-Za-z0-9]"/>
+			<xsd:pattern value="urn:fdc:[A-Za-z0-9_:.()+,-=@;$!*']{1,1991}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:attributeGroup name="MISMOarcLink">
+		<xsd:annotation>
+			<xsd:documentation>An xlink set of attributes that identifies two end points and the kind of relationship they have to each other.</xsd:documentation>
+			<xsd:documentation>term: Arc Link</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="arcrole" type="xlink:ArcroleAtomic"/>
+		<xsd:attribute ref="xlink:from"/>
+		<xsd:attribute ref="xlink:to"/>
+	</xsd:attributeGroup>
+	<xsd:attributeGroup name="MISMOresourceLink">
+		<xsd:annotation>
+			<xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+			<xsd:documentation>term: Resource Endpoint</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute ref="xlink:label"/>
+	</xsd:attributeGroup>
+</xsd:schema>

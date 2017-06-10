@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.mismo.org/residential/2009/schemas" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://www.mismo.org/residential/2009/schemas">
+	<xsd:annotation>
+		<xsd:documentation>Version 3.3.0  Build B299 Date 2014-02-04 Iteration 2014-02-07</xsd:documentation>
+		<xsd:documentation>Copyright 2014 Mortgage Industry Standards Maintenance Organization (MISMO) All rights reserved.&#xD;THIS MISMO STANDARD INCLUDES THE END USER LICENSE AGREEMENT ATTACHED HERETO AT  http://www.mismo.org/AboutMISMO/PoliciesandProcedures.htm  AND IS GOVERNED BY AND SUBJECT TO THE END USER LICENSE AGREEMENT. NO USER OF THIS STANDARD MAY REMOVE THIS REFERENCE TO AND STATEMENT REGARDING THE END USER LICENSE. ANY HARD COPY PUBLICATION OF THIS STANDARD MUST INCLUDE AND ATTACH A HARD COPY PRINT OUT OFTHE END USER LICENSE.  ANY FURTHER ELECTRONIC DISTRIBUTION OF THIS STANDARD MUST INCLUDE A SPECIFIC REFERENCED LINK TO THE END USER LICENSE AGREEMENT OR OTHER MEANS OF ATTACHMENT OF THE END USER LICENSE AGREEMENT.&#xD;DISCLAIMER: THIS MISMO STANDARD IS PROVIDED "AS IS." MISMO, THE MORTGAGE BANKERS ASSOCIATION OF AMERICA ("MBA"), THE COPYRIGHT HOLDER, THE AUTHORS OF THIS MISMO STANDARD AND ANY STANDARD- SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD MAKE NO REPRESENTATIONS OR WARRANTIES (i) EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT; (ii) THAT THE CONTENTS OF SUCH MISMO STANDARD ARE FREE FROM ERROR OR SUITABLE FOR ANY PURPOSE; NOR THAT IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD-PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. IN NO EVENT WILL MISMO, MBA, THE COPYRIGHT HOLDER OR THE STANDARD-SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD BE LIABLE TO ANY PARTY FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES FOR ANY USE OF THIS MISMO STANDARD, INCLUDING, WITHOUT LIMITATION, ANY LOST PROFITS, BUSINESS INTERRUPTION, LOSS OF PROGRAMS OR OTHER DATA ON YOUR INFORMATION HANDLING SYSTEM OR OTHERWISE, EVEN IF MISMO, MBA, THE COPYRIGHT HOLDER AND/OR ANY AUTHORS AND/OR ANY STANDARD-SETTING BODY PARTICIPANTS TO THIS MISMO STANDARD ARE EXPRESSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+		</xsd:documentation>
+    </xsd:annotation>
+	<xsd:element name="LATE_CHARGE_RULE" type="LATE_CHARGE_RULE">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LEGAL_ENTITY" type="LEGAL_ENTITY">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="LEGAL_ENTITY">
+        <xsd:annotation>
+            <xsd:documentation>This is additional information that describes or identifies a legal entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="LEGAL_ENTITY_DETAIL" type="LEGAL_ENTITY_DETAIL" minOccurs="0">
+                <xsd:annotation />
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="LEGAL_ENTITY_DETAIL">
+        <xsd:annotation />
+        <xsd:sequence>
+            <xsd:element name="FullName" type="MISMOString" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The unparsed name of either an individual or a legal entity.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+	<xsd:complexType name="LATE_CHARGE_RULE">
+		<xsd:annotation />
+		<xsd:sequence>
+			<xsd:element name="LateChargeAmount" type="MISMOAmount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The dollar amount that a borrower is required to pay for failure to make a regular installment within the period specified on the note. This is used when late charge is defined as a flat dollar amount.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LateChargeGracePeriodDaysCount" type="MISMOCount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The grace period in days for this loan before a late charge will be applied.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LateChargeRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The percentage that a borrower is required to pay for failure to make a regular installment within the period specified on the note. This is the amount specified by the late charge code and is used when the late charge is not a flat dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LateChargeType" type="LateChargeEnum" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The type of late charge that may be applied to the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LateChargeEnum">
+		<xsd:annotation>
+			<xsd:documentation>The type of late charge that may be applied to the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="LateChargeBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="LateChargeBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Late Charge Type Definition: The type of late charge that may be applied to the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="MISMOEnum_Base">
+			<xsd:enumeration value="FlatDollarAmount">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NoLateCharges">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentageOfDelinquentInterest">
+				<xsd:annotation>
+					<xsd:documentation>Late charge is a percentage of the delinquent interest on any overdue payment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentageOfNetPayment">
+				<xsd:annotation>
+					<xsd:documentation>Late change is a percentage of the total payment less any buydown subsidy or optional insurance portion of that payment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentageOfPrincipalBalance">
+				<xsd:annotation>
+					<xsd:documentation>Late charge is a percentage of the principal balance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentageOfTotalPayment">
+				<xsd:annotation>
+					<xsd:documentation>Late charge is a percentage of the total payment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentOfPrincipalAndInterest">
+				<xsd:annotation>
+					<xsd:documentation>Late charge is a percentage of principal and interest amount.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

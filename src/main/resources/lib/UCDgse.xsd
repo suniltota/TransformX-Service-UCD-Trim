@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.datamodelextension.org" xmlns:mismo="http://www.mismo.org/residential/2009/schemas" targetNamespace="http://www.datamodelextension.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xsd:annotation/>
+	
+	<xsd:import namespace="http://www.mismo.org/residential/2009/schemas" schemaLocation="UCD_GSE_MISMO_Shared_ComplexTypes.xsd"/>
+	
+	<xsd:attribute name="DisplayLabelText" type="DisplayLabelText"/>
+	<xsd:element name="TotalOptionalPaymentCount" type="Count_Base">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TotalStepPaymentCount" type="Count_Base">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IntegratedDisclosureSectionType" type="IntegratedDisclosureSectionEnum" >
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LiabilitySecuredBySubjectPropertyIndicator" type="Indicator_Base">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TotalStepCount" type="Count_Base"> 
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BuydownReflectedInNoteIndicator" type="Indicator_Base">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SubordinateFinancingIsNewIndicator" type="Indicator_Base">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DocumentSignatureRequiredIndicator" type="Indicator_Base">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CLOSING_ADJUSTMENT_ITEM_PAID_TO" type="CLOSING_ADJUSTMENT_ITEM_PAID_TO">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="CLOSING_ADJUSTMENT_ITEM_PAID_TO">
+		<xsd:annotation />
+        <xsd:sequence>
+			<xsd:element ref="mismo:LEGAL_ENTITY" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+	<xsd:element name="LATE_CHARGE_RULES" type="LATE_CHARGE_RULES">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="LATE_CHARGE_RULES">
+		<xsd:annotation />
+        <xsd:sequence>
+			<xsd:element ref="mismo:LATE_CHARGE_RULE" maxOccurs="2"/>
+		</xsd:sequence>
+    </xsd:complexType>
+	<xsd:complexType name="IntegratedDisclosureSectionEnum">
+		<xsd:annotation>
+			<xsd:documentation>The title or description used to identify a primary section of the integrated disclosure document.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="IntegratedDisclosureSection">
+				<xsd:attribute name="SensitiveIndicator" type="Indicator_Base">
+					<xsd:annotation>
+						<xsd:documentation>Allows producers and consumers of XML instance documents that are valid V3 documents to mark any data point to be treated as sensitive. recommends that any use of a data point labeled as "Sensitive Information" in the LDD ALWAYS have this attribute set to "true".</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="IntegratedDisclosureSection">
+		<xsd:annotation>
+			<xsd:documentation>Term: Integrated Disclosure Section Type Definition: The title or description used to identify a primary section of the integrated disclosure document.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="Enum_Base">
+			<xsd:enumeration value="DueFromBorrowerAtClosing">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DueFromSellerAtClosing">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DueToSellerAtClosing">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="InitialEscrowPaymentAtClosing">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="OriginationCharges">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="OtherCosts">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PaidAlreadyByOrOnBehalfOfBorrowerAtClosing">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PayoffsAndPayments">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Prepaids">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ServicesBorrowerDidNotShopFor">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ServicesBorrowerDidShopFor">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TaxesAndOtherGovernmentFees">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TotalClosingCosts">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TotalLoanCosts">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TotalOtherCosts">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DisplayLabelText">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="16383" />
+        </xsd:restriction>
+    </xsd:simpleType>
+	<xsd:simpleType name="Enum_Base">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="80" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Indicator_Base">
+		<xsd:restriction base="xsd:boolean" />
+	</xsd:simpleType>
+	<xsd:simpleType name="Count_Base">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Amount_Base">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Percent_Base">
+		<xsd:restriction base="xsd:decimal" />
+	</xsd:simpleType>
+</xsd:schema>
