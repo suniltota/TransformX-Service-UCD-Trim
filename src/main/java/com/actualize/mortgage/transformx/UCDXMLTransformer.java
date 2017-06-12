@@ -37,6 +37,8 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -83,10 +85,11 @@ public class UCDXMLTransformer {
         ucdFileName = transformer.createUCDXMLFile(doc, ucdFileName);
     }
 
-*/    public Document getUCDXmlDocument(final Document doc, final File ucdFileName) throws TransformerException {
-        try {
+*/    public Document getUCDXmlDocument(final Document doc, final File ucdFileName) throws TransformerException, IOException {
+		InputStream inputStream = null;
+	try {
             Document outputDoc = doc;
-            InputStream inputStream = convertToInputStream(outputDoc);
+            inputStream = convertToInputStream(outputDoc);
             List<UCDError> exceptions = findMissingElements(outputDoc);
             Map<Integer,UCDError> errors = new HashMap<>();
             for (UCDError ucdError : exceptions) {
@@ -106,6 +109,11 @@ public class UCDXMLTransformer {
             return outputDoc;
         } catch (IOException | SAXException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+        }
+        finally
+        {
+        	if(null != inputStream)
+        		inputStream.reset();
         }
         return null;
     }
@@ -138,10 +146,14 @@ public class UCDXMLTransformer {
             if (validator == null) {
                 //For Command path input file path
                 //String filepathTxt = new File(getClass().getProtectionDomain().getCodeSource().getLocation().toString()).getParent()+"\\"+ucdXsd;
+            	
+            	Resource resource = new ClassPathResource("/lib/"+ucdXsd);
+            	File xsdFile = resource.getFile();
+            	
                 //For Eclipse input file path
                 String filepathTxt = "/lib/"+ucdXsd;
                 filepathTxt = filepathTxt.replaceAll("file:\\\\", "");
-                validator = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(new File(getClass().getClassLoader().getResource(filepathTxt).getPath())).newValidator();
+                validator = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(xsdFile).newValidator();
             }
             validator.setErrorHandler(new ErrorHandler() {
                 @Override
