@@ -148,12 +148,12 @@ public class UCDXMLTransformer {
                 //String filepathTxt = new File(getClass().getProtectionDomain().getCodeSource().getLocation().toString()).getParent()+"\\"+ucdXsd;
             	
             	Resource resource = new ClassPathResource("/lib/"+ucdXsd);
-            	File xsdFile = resource.getFile();
+            	File xsdFile = new File("/srv/lib/"+ucdXsd);
             	
                 //For Eclipse input file path
                 String filepathTxt = "/srv/lib/"+ucdXsd;
                 filepathTxt = filepathTxt.replaceAll("file:\\\\", "");
-                validator = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(new File(filepathTxt)).newValidator();
+                validator = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(xsdFile).newValidator();
             }
             validator.setErrorHandler(new ErrorHandler() {
                 @Override
