@@ -151,9 +151,9 @@ public class UCDXMLTransformer {
             	File xsdFile = resource.getFile();
             	
                 //For Eclipse input file path
-                String filepathTxt = "/lib/"+ucdXsd;
+                String filepathTxt = "/srv/lib/"+ucdXsd;
                 filepathTxt = filepathTxt.replaceAll("file:\\\\", "");
-                validator = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(xsdFile).newValidator();
+                validator = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(new File(filepathTxt)).newValidator();
             }
             validator.setErrorHandler(new ErrorHandler() {
                 @Override

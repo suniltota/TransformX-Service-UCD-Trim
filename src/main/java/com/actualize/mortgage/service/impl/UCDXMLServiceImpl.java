@@ -37,7 +37,7 @@ public class UCDXMLServiceImpl {
 	        try{
 
 			// write the inputStream to a FileOutputStream
-			outputStream =  new FileOutputStream(new File(getClass().getClassLoader().getResource("targetFile.xml").getFile()));
+			outputStream =  new FileOutputStream(new File("/srv/targetFile.xml"));
 
 			int read = 0;
 			byte[] bytes = new byte[1024];
@@ -58,7 +58,7 @@ public class UCDXMLServiceImpl {
 				}
 			}
 	        
-	        File ucdFileName = new File(getClass().getClassLoader().getResource("targetFile.xml").getFile());
+	        File ucdFileName = new File("/srv/targetFile.xml");
 	        doc= transformer.getUCDXmlDocument(doc, ucdFileName);
 
 	        doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(ucdFileName);
