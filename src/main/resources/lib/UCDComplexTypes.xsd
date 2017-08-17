@@ -239,7 +239,7 @@ Include information regarding if...then on using unparsed vs. parsed information
                     <xsd:documentation>For a step in a process, contains the type of action or state.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="EventTypeOtherDescription" type="MISMOString" minOccurs="0" fixed="AppliedTamperEvidentSignature">
+            <xsd:element name="EventTypeOtherDescription" type="MISMOString" minOccurs="0">
                 <xsd:annotation>
                     <xsd:documentation>A free-form text field used to describe the type of action or state if Other is selected as the Event Type.</xsd:documentation>
                 </xsd:annotation>

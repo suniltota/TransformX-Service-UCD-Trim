@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="http://www.datamodelextension.org" xmlns:mismo="http://www.mismo.org/residential/2009/schemas" targetNamespace="http://www.datamodelextension.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+<xsd:schema xmlns="http://www.datamodelextension.org" targetNamespace="http://www.datamodelextension.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
 	<xsd:annotation/>
-	
-	<xsd:import namespace="http://www.mismo.org/residential/2009/schemas" schemaLocation="UCD_GSE_MISMO_Shared_ComplexTypes.xsd"/>
 	
 	<xsd:attribute name="DisplayLabelText" type="DisplayLabelText"/>
 	<xsd:element name="TotalOptionalPaymentCount" type="Count_Base">
@@ -53,7 +51,27 @@
 	<xsd:complexType name="CLOSING_ADJUSTMENT_ITEM_PAID_TO">
 		<xsd:annotation />
         <xsd:sequence>
-			<xsd:element ref="mismo:LEGAL_ENTITY" minOccurs="0"/>
+			<xsd:element name="LEGAL_ENTITY" type="LEGAL_ENTITY" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+	<xsd:complexType name="LEGAL_ENTITY">
+        <xsd:annotation>
+            <xsd:documentation>This is additional information that describes or identifies a legal entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="LEGAL_ENTITY_DETAIL" type="LEGAL_ENTITY_DETAIL" minOccurs="0">
+                <xsd:annotation />
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="LEGAL_ENTITY_DETAIL">
+        <xsd:annotation />
+        <xsd:sequence>
+            <xsd:element name="FullName" type="DisplayLabelText" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The unparsed name of either an individual or a legal entity.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
 	<xsd:element name="LATE_CHARGE_RULES" type="LATE_CHARGE_RULES">
@@ -64,9 +82,84 @@
 	<xsd:complexType name="LATE_CHARGE_RULES">
 		<xsd:annotation />
         <xsd:sequence>
-			<xsd:element ref="mismo:LATE_CHARGE_RULE" maxOccurs="2"/>
+			<xsd:element name="LATE_CHARGE_RULE" type="LATE_CHARGE_RULE" maxOccurs="2"/>
 		</xsd:sequence>
     </xsd:complexType>
+	<xsd:complexType name="LATE_CHARGE_RULE">
+		<xsd:annotation />
+		<xsd:sequence>
+			<xsd:element name="LateChargeAmount" type="Amount_Base" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The dollar amount that a borrower is required to pay for failure to make a regular installment within the period specified on the note. This is used when late charge is defined as a flat dollar amount.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LateChargeGracePeriodDaysCount" type="Count_Base" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The grace period in days for this loan before a late charge will be applied.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LateChargeRatePercent" type="Percent_Base" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The percentage that a borrower is required to pay for failure to make a regular installment within the period specified on the note. This is the amount specified by the late charge code and is used when the late charge is not a flat dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LateChargeType" type="LateChargeEnum" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The type of late charge that may be applied to the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LateChargeEnum">
+		<xsd:annotation>
+			<xsd:documentation>The type of late charge that may be applied to the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="LateChargeBase"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="LateChargeBase">
+		<xsd:annotation>
+			<xsd:documentation>Term: Late Charge Type Definition: The type of late charge that may be applied to the loan.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="Enum_Base">
+			<xsd:enumeration value="FlatDollarAmount">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NoLateCharges">
+				<xsd:annotation>
+					<xsd:documentation />
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentageOfDelinquentInterest">
+				<xsd:annotation>
+					<xsd:documentation>Late charge is a percentage of the delinquent interest on any overdue payment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentageOfNetPayment">
+				<xsd:annotation>
+					<xsd:documentation>Late change is a percentage of the total payment less any buydown subsidy or optional insurance portion of that payment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentageOfPrincipalBalance">
+				<xsd:annotation>
+					<xsd:documentation>Late charge is a percentage of the principal balance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentageOfTotalPayment">
+				<xsd:annotation>
+					<xsd:documentation>Late charge is a percentage of the total payment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PercentOfPrincipalAndInterest">
+				<xsd:annotation>
+					<xsd:documentation>Late charge is a percentage of principal and interest amount.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
 	<xsd:complexType name="IntegratedDisclosureSectionEnum">
 		<xsd:annotation>
 			<xsd:documentation>The title or description used to identify a primary section of the integrated disclosure document.</xsd:documentation>
